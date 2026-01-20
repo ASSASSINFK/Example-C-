@@ -1,33 +1,28 @@
-
 #include <iostream>
-
 using namespace std;
+
+
+int ackermann(int m, int n) {
+    if (m == 0) {
+        return n + 1;
+    } else if (m > 0 && n == 0) {
+        return ackermann(m - 1, 1);
+    } else if (m > 0 && n > 0) {
+        return ackermann(m - 1, ackermann(m, n - 1));
+    }
+    return -1; 
+}
 
 int main() {
 	
 	
-	
-  int sayi, toplam = 0, sayac = 0;
-  int i=1;
-  
-  cout << "Bir sayi girin: ";
-  cin >> sayi;
+    int m, n;
+    cout << "m ve n degerlerini girin: ";
+    cin >> m >> n;
 
- 
-  while (i <= sayi) {
-    i++;
-    
-    if (i % 3 == 0) {
-      toplam += i; 
-      sayac++; 
-    }
-  }
+    int sonuc = ackermann(m, n);
+    cout << "Ackermann fonksiyonu A(" << m << ", " << n << ") = " << sonuc << endl;
 
-  
-  double ortalama = (double)toplam / sayac;
-
-  cout << "3 e bolunen sayilarin ortalamasi: " << ortalama << endl;
-
-  return 0;
+    return 0;
 }
 
